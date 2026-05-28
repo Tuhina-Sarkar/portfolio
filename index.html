@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tuhina Sarkar-Portfolio</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Google Fonts for elegance -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+       background: #0a0a0a;
+       color: #e0e0e0;
+      min-height: 100vh;
+      padding: 1rem 0;
+    }
+    #about{
+        background: linear-gradient(135deg, #0a0a0a 0%, #2a0845 50%, #0a0a0a 100%);
+    }
+    .glass, .skill-category, .project-card {
+  background: rgba(20, 20, 30, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid #6C3BA1;   /* Purple border */
+  box-shadow: 0 0 20px rgba(108, 59, 161, 0.2);
+}
+
+    /* glassmorphism card / container */
+    .glass {
+      /* background-webkit-backdrop-filter: blur(14px); */
+      border-radius: 24px;
+      padding: 2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .glass:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    /* navbar glass */
+    .navbar-glass {
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 60px;
+      padding: 0.6rem 1.5rem;
+      margin-bottom: 2rem;
+      background: rgba(10, 10, 10, 0.9);
+      border-bottom: 1px solid #6C3BA1;   
+    }
+
+    .navbar-glass .nav-link {
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .navbar-glass .nav-link:hover {
+      color: #fff !important;
+    }
+
+    .navbar-glass .navbar-brand {
+      font-weight: 700;
+      color: #fff !important;
+      letter-spacing: -0.5px;
+    }
+
+    .btn-glass {
+      background: rgba(108, 59, 161, 0.3);
+      border: 1px solid #b388ff;
+       color: #e0e0e0;
+      backdrop-filter: blur(6px);
+      border-radius: 40px;
+      padding: 0.5rem 1.4rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-glass:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.4);
+       background: rgba(108, 59, 161, 0.6);
+       box-shadow: 0 0 25px #6C3BA1;
+
+    }
+
+    .section-title {
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #a18cd1, #fbc2eb);
+      border-radius: 4px;
+    }
+
+    .skill-badge {
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      display: inline-block;
+      margin: 0.3rem;
+      background: rgba(108, 59, 161, 0.2);
+      color: #d4c4f0;
+      border: 1px solid #6C3BA1;
+    }
+    .skill-badge:hover,
+.skill-category:hover,
+.project-card:hover {
+  box-shadow: 0 0 25px #6C3BA1;
+}
+
+    .project-card {
+      border-radius: 20px;
+      padding: 1.5rem;
+      transition: 0.2s;
+      height: 100%;
+    }
+    h2, h3, .section-title {
+  color: #b388ff;  /* Light purple */
+}
+
+    .project-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .connect-icon {
+      font-size: 1.8rem;
+      color: rgba(255, 255, 255, 0.7);
+      transition: 0.2s;
+      margin: 0 0.5rem;
+    }
+
+    .connect-icon:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .form-control-glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border-radius: 16px;
+      padding: 0.8rem 1.2rem;
+    }
+
+    .form-control-glass::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .form-control-glass:focus {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: none;
+      color: #fff;
+    }
+
+    /* for resume download button */
+    .resume-btn {
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      border: none;
+      color: #1a1a2e;
+      font-weight: 700;
+      padding: 0.5rem 1.6rem;
+      border-radius: 40px;
+      transition: 0.2s;
+    }
+
+    .resume-btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 20px rgba(161, 140, 209, 0.4);
+      color: #1a1a2e;
+    }
+
+    hr {
+      border: 0.5px solid rgba(255, 255, 255, 0.1);
+      margin: 2rem 0;
+    }
+    .skill-badge:hover {
+  box-shadow: 0 0 20px rgba(161,140,209,0.6);
+}
+.skill-category {
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: 0.3s;
+}
+.skill-category:hover {
+  box-shadow: 0 0 20px rgba(161,140,209,0.4);
+}
+.skill-category h3 {
+  margin-top: 0;
+  color: #a18cd1;
+  font-size: 1.2rem;
+}
+.skill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+    /* responsive tweaks */
+    @media (max-width: 768px) {
+      .navbar-glass {
+        border-radius: 30px;
+        padding: 0.4rem 1rem;
+      }
+      .glass {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg navbar-glass">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand" href="#"><i class="fas fa-code me-2"></i>My Portfolio</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#connect">Connect</a></li>
+            <li class="nav-item">
+              <!-- Resume download button (dummy link) -->
+              <a href="#" class="btn resume-btn ms-2" onclick="alert('Resume download simulated. Replace with actual file.'); return false;">
+                <i class="fas fa-download me-1"></i> Resume
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== HERO / ABOUT ========== -->
+    <section id="about" class="glass mb-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+            <span class="badge bg-white bg-opacity-40 text-dark px-3 py-2 rounded-pill mb-3"><i class="bi bi-stars"></i>About Me</span>
+          <h1 class="display-5 fw-bold">Hi, I'm Tuhina Sarkar</h1>
+          <p class="fs-5 mt-3" style="color: rgba(255,255,255,0.85);">
+            A passionate <strong>Frontend Developer</strong> who loves crafting clean, responsive, and visually engaging web experiences. 
+            I blend creativity with code to build interfaces that feel intuitive and look stunning.
+          </p>
+          <p class="mt-2" style="color: rgba(255,255,255,0.7);">
+            I specialize in HTML, CSS, JavaScript, Bootstrap, and modern design tools. 
+            Every pixel matters — let’s build something amazing together.
+          </p>
+          <div class="mt-4">
+            <a href="#connect" class="btn btn-glass me-2"><i class="fas fa-paper-plane me-1"></i> Hire Me</a>
+            <a href="#projects" class="btn btn-glass"><i class="fas fa-folder-open me-1"></i> View Work</a>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center">
+          <div style="width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); border: 2px solid rgba(255,255,255,0.2); margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-user-astronaut fa-5x" style="color: rgba(255,255,255,0.6);"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section id="skills" class="glass mb-5">
+      <h2 class="section-title"><i class="fas fa-cogs me-2"></i>Skills & Tools</h2>
+      <div class="skills-section">
+  <!-- Technical Skills Container -->
+  <div class="skill-category">
+    <h3>💻 Technical Skills</h3>
+    <div class="skill-container">
+      <span class="skill-badge">HTML5</span>
+      <span class="skill-badge">CSS3</span>
+      <span class="skill-badge">JavaScript</span>
+      <span class="skill-badge">Bootstrap</span>
+      <!-- add more -->
+    </div>
+  </div>
+
+  <!-- Personal Skills Container -->
+  <div class="skill-category">
+    <h3>🧠 Personal Skills</h3>
+    <div class="skill-container">
+      <span class="skill-badge">Teamwork</span>
+      <span class="skill-badge">Communication</span>
+      <span class="skill-badge">Problem Solving</span>
+      <span class="skill-badge">Time Management</span>
+
+      <!-- add more -->
+    </div>
+  </div>
+
+  <!-- Tools Container -->
+  <div class="skill-category">
+    <h3>🛠️ Tools</h3>
+    <div class="skill-container">
+      <span class="skill-badge">Git/Github</span>
+      <span class="skill-badge">VS Code</span>
+      <span class="skill-badge">Figma</span>
+      <span class="skill-badge">Canva</span>
+      <!-- add more -->
+    </div>
+  </div>
+</div>
+    </section>
+     <section id="education" class="glass mb-5">
+      <h2 class="section-title"><i class="fas fa-graduation-cap me-2"></i>Education</h2>
+      <div class="row g-4 mt-2">
+        <div class="col-md-4">
+          <div class="p-3" style="background: rgba(255,255,255,0.05); border-radius: 20px;">
+            <h5><i class="fas fa-school me-2"></i>Secondary (10th)</h5>
+            <p class="mb-1"><strong>Irvine Adventist School</strong></p>
+            <p class="mb-0">Percentage: 91.8%</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3" style="background: rgba(255,255,255,0.05); border-radius: 20px;">
+            <h5><i class="fas fa-school me-2"></i>Higher Secondary (12th)</h5>
+            <p class="mb-1"><strong>Kendriya Vidyalaya</strong></p>
+            <p class="mb-0">Percentage: 95.2%</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3" style="background: rgba(255,255,255,0.05); border-radius: 20px;">
+            <h5><i class="fas fa-laptop-code me-2"></i>B.Tech CSE (Pursuing)</h5>
+            <p class="mb-1"><strong>Netaji Subhas University</strong></p>
+            <p class="mb-0">Currently enrolled</p>
+          </div>
+        </div>
+      </div>
+      </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section id="projects" class="glass mb-5">
+      <h2 class="section-title"><i class="fas fa-folder-open me-2"></i>Projects</h2>
+      <div class="row g-4 mt-2">
+        <!-- Calculator -->
+        <div class="col-md-4">
+          <div class="project-card text-center">
+            <i class="fas fa-calculator fa-3x mb-3" style="color: #fbc2eb;"></i>
+            <h5>Calculator</h5>
+            <p style="color: rgba(255,255,255,0.7);">A clean, responsive calculator built with HTML, CSS &amp; JavaScript. Supports basic arithmetic operations.</p>
+            <span class="skill-badge" style="font-size: 0.8rem;">HTML5</span>
+            <span class="skill-badge" style="font-size: 0.8rem;">CSS3</span>
+            <span class="skill-badge" style="font-size: 0.8rem;">JS</span>
+            <a href="https://tuhina-sarkar.github.io/calculator/" target="_blank" class="btn btn-glass mt-2">Live Demo &#128065;</a>
+          </div>
+        </div>
+        <!-- Boutique Demo -->
+        <div class="col-md-4">
+          <div class="project-card text-center">
+            <i class="fas fa-tshirt fa-3x mb-3" style="color: #a18cd1;"></i>
+            <h5>Boutique Demo Website</h5>
+            <p style="color: rgba(255,255,255,0.7);">Elegant boutique landing page with product grid, gallery and smooth animations using Bootstrap.</p>
+            <span class="skill-badge" style="font-size: 0.8rem;">HTML5</span>
+            <span class="skill-badge" style="font-size: 0.8rem;">Bootstrap</span>
+            <span class="skill-badge" style="font-size: 0.8rem;">CSS3</span>
+            <br><a href="https://boutique-demo-beta.vercel.app/" target="_blank" class="btn btn-glass mt-2">Live Demo &#128065;</a>
+
+          </div>
+        </div>
+        <!-- Coffee Website -->
+        <div class="col-md-4">
+          <div class="project-card text-center">
+            <i class="fas fa-mug-hot fa-3x mb-3" style="color: #d4a373;"></i>
+            <h5>Coffee Website</h5>
+            <p style="color: rgba(255,255,255,0.7);">A cozy coffee shop website with menu, about section and contact form. Fully responsive.</p>
+            <span class="skill-badge" style="font-size: 0.8rem;">HTML5</span>
+            <span class="skill-badge" style="font-size: 0.8rem;">CSS3</span>
+            <span class="skill-badge" style="font-size: 0.8rem;">Bootstrap</span><br>
+            <a href="https://your-live-demo-link.com" target="_blank" class="btn btn-glass mt-2">Live Demo &#128065;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONNECT WITH ME ========== -->
+    <section id="connect" class="glass mb-5">
+      <h2 class="section-title"><i class="fas fa-handshake me-2"></i>Connect With Me</h2>
+      <div class="row g-4 mt-2">
+        <!-- Contact details + social -->
+        <div class="col-md-5">
+          <div class="d-flex flex-column gap-3">
+            <p style="font-style: italic; font-size:larger">Got an idea or just want to chat!<br> I am a message away
+            <br>
+          Reach out to me for any internships or project opportunities! </p>
+            <div><i class="fas fa-envelope me-2" style="color: #fbc2eb;"></i>tuhinasarkar2006@gmail.com</div>
+            <!-- <div><i class="fas fa-phone me-2" style="color: #a18cd1;"></i> +91 9263670525</div> -->
+            <div><i class="fas fa-map-marker-alt me-2" style="color: #fbc2eb;"></i> Jamshedpur, India</div>
+            <div class="mt-2">
+              <a href="https://www.linkedin.com/in/tuhina-sarkar-4145a2325?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="connect-icon"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/Tuhina-Sarkar" class="connect-icon"><i class="fab fa-github"></i></a>
+              <a href="https://x.com/i_amTuhina" class="connect-icon"><i class="fab fa-twitter"></i></a>
+              <!-- <a href="#" class="connect-icon"><i class="fab fa-instagram"></i></a> -->
+            </div>
+          </div>
+        </div>
+        <!-- Message area -->
+        <div class="col-md-7">
+          <form>
+            <div class="mb-3">
+              <input type="text" class="form-control form-control-glass" placeholder="Your Name" />
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control form-control-glass" placeholder="Your Email" />
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control form-control-glass" rows="4" placeholder="Tell me about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn resume-btn w-100"><i class="fas fa-paper-plane me-1"></i> Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="text-center py-3" style="color: rgba(255,255,255,0.4);">
+      <small>&copy; 2026 Tuhina Sarkar. Crafted with <i class="fas fa-heart" style="color: #fbc2eb;"></i></small>
+    </footer>
+
+  </div>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+  </script>
+</body>
+</html>
