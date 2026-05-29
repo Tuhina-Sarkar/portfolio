@@ -422,15 +422,16 @@
         </div>
         <!-- Message area -->
         <div class="col-md-7">
-          <form>
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="479d04c3-50e2-410c-a5fb-3c775c7cde6c">
             <div class="mb-3">
-              <input type="text" class="form-control form-control-glass" placeholder="Your Name" />
+              <input type="text" name="name" class="form-control form-control-glass" placeholder="Your Name" />
             </div>
             <div class="mb-3">
-              <input type="email" class="form-control form-control-glass" placeholder="Your Email" />
+              <input type="email" name="email"  class="form-control form-control-glass" placeholder="Your Email" />
             </div>
             <div class="mb-3">
-              <textarea class="form-control form-control-glass" rows="4" placeholder="Tell me about your project..."></textarea>
+              <textarea class="form-control form-control-glass" name="message" rows="4" placeholder="Tell me about your project..."></textarea>
             </div>
             <button type="submit" class="btn resume-btn w-100"><i class="fas fa-paper-plane me-1"></i> Send Message</button>
           </form>
