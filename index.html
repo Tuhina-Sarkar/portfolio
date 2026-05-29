@@ -112,13 +112,18 @@
       background: linear-gradient(90deg, #a18cd1, #fbc2eb);
       border-radius: 4px;
     }
+    .skills-section{
+      display:flex;
+      flex-direction: row;
+      justify-content:center;
+      gap: 1.5rem;
+    }
 
     .skill-badge {
       backdrop-filter: blur(4px);
       padding: 0.5rem 1.2rem;
       border-radius: 40px;
       font-weight: 500;
-      display: inline-block;
       margin: 0.3rem;
       background: rgba(108, 59, 161, 0.2);
       color: #d4c4f0;
@@ -129,20 +134,114 @@
 .project-card:hover {
   box-shadow: 0 0 25px #6C3BA1;
 }
+/* Education cards layout */
+.education-section{
+  border:1px solid #6C3BA1;
+  border-radius: 16px;
+  margin:40px;
+  padding:40px;
+}
+.education-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* optional: wraps on small screens */
+  margin-bottom: 20px;
+}
 
-    .project-card {
+.edu-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  background: rgba(20, 20, 30, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid #6C3BA1;
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.edu-card {
+  background: rgba(20, 20, 30, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid #6C3BA1;
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.edu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px #6C3BA1;
+}
+
+.edu-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.edu-card h3 {
+  color: #b388ff;
+  margin: 0.5rem 0;
+}
+
+.edu-institute {
+  color: #ccc;
+  font-weight: 500;
+}
+
+.edu-year {
+  color: #a18cd1;
+  font-size: 0.9rem;
+}
+
+.edu-desc {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+/* Scroll animation */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger delay for each card (optional) */
+.edu-card:nth-child(1) { animation-delay: 0.1s; }
+.edu-card:nth-child(2) { animation-delay: 0.3s; }
+.edu-card:nth-child(3) { animation-delay: 0.5s; }
+ .project-card {
       border-radius: 20px;
       padding: 1.5rem;
       transition: 0.2s;
       height: 100%;
+      transform: scale(1.0);
     }
+
     h2, h3, .section-title {
   color: #b388ff;  /* Light purple */
 }
-
-    .project-card:hover {
+.skill-badge:hover,
+.skill-category:hover,
+.project-card:hover {
+  box-shadow: 0 0 25px #6C3BA1;
+  transform: scale(1.08);
+}
+ .project-card:hover {
       background: rgba(255, 255, 255, 0.12);
     }
+
 
     .connect-icon {
       font-size: 1.8rem;
@@ -328,32 +427,39 @@
   </div>
 </div>
     </section>
-     <section id="education" class="glass mb-5">
-      <h2 class="section-title"><i class="fas fa-graduation-cap me-2"></i>Education</h2>
-      <div class="row g-4 mt-2">
-        <div class="col-md-4">
-          <div class="p-3" style="background: rgba(255,255,255,0.05); border-radius: 20px;">
-            <h5><i class="fas fa-school me-2"></i>Secondary (10th)</h5>
-            <p class="mb-1"><strong>Irvine Adventist School</strong></p>
-            <p class="mb-0">Percentage: 91.8%</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-3" style="background: rgba(255,255,255,0.05); border-radius: 20px;">
-            <h5><i class="fas fa-school me-2"></i>Higher Secondary (12th)</h5>
-            <p class="mb-1"><strong>Kendriya Vidyalaya</strong></p>
-            <p class="mb-0">Percentage: 95.2%</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-3" style="background: rgba(255,255,255,0.05); border-radius: 20px;">
-            <h5><i class="fas fa-laptop-code me-2"></i>B.Tech CSE (Pursuing)</h5>
-            <p class="mb-1"><strong>Netaji Subhas University</strong></p>
-            <p class="mb-0">Currently enrolled</p>
-          </div>
-        </div>
-      </div>
-      </section>
+  <section id="education" class="education-section">
+  <h2 class="section-title">🎓 Education</h2>
+  <div class="education-container">
+
+    <!-- B.Tech (first) -->
+    <div class="edu-card animate-on-scroll">
+      <div class="edu-icon">🎓</div>
+      <h3>Bachelor of Technology (B.Tech)</h3>
+      <p class="edu-institute">Netaji Subhas University</p>
+      <p class="edu-year">2024 – 2028</p>
+      <p class="edu-desc">Computer Science & Engineering – Currently pursuing</p>
+    </div>
+
+    <!-- 12th (second) -->
+    <div class="edu-card animate-on-scroll">
+      <div class="edu-icon">📚</div>
+      <h3>Higher Secondary (12th)</h3>
+      <p class="edu-institute">Kendriya Vidyalaya</p>
+      <p class="edu-year">2022 – 2024</p>
+      <p class="edu-desc">Science Stream – Percentage: 95.2%</p>
+    </div>
+
+    <!-- 10th (third) -->
+    <div class="edu-card animate-on-scroll">
+      <div class="edu-icon">📖</div>
+      <h3>Secondary (10th)</h3>
+      <p class="edu-institute">Irvine Adventist School</p>
+      <p class="edu-year">2020 – 2022</p>
+      <p class="edu-desc">Percentage: 91.8%</p>
+    </div>
+
+  </div>
+</section>
 
     <!-- ========== PROJECTS ========== -->
     <section id="projects" class="glass mb-5">
@@ -448,6 +554,21 @@
 
   <!-- Bootstrap JS bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+ 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    el.style.animationPlayState = 'paused'; // start paused
+    observer.observe(el);
+  });
+
   </script>
 </body>
 </html>
